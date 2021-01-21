@@ -1,0 +1,39 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void solve()
+{
+    int n, s, p, v, ans = 0;
+    
+    cin >> n;
+    
+    for(int i=0; i<n; i++)
+    {
+        cin >> s;
+        cin >> p;
+        cin >> v;
+        
+        // customers that will visit chef's store
+        int customers = p/(s+1);
+        
+        // save the profit made in the 'ans' variable if it is greater than the previous profit
+        // after checking for a type of street food 
+        ans = max(ans, customers*v);
+    }
+    
+    cout << ans << "\n";
+}
+
+int main() {
+	
+	int test;
+	cin >> test;
+	
+	while(test--)
+	{
+	    solve();
+	}
+	
+	return 0;
+}
