@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+void solve()
+{
+    int n, score_A = 0, score_B = 0, left_A , left_B, shot;
+
+    cin >> n;
+
+    // shots left
+    left_A = n;
+    left_B = n;
+
+    string points;
+    cin >> points;
+
+    for(shot = 0; shot<2*n; shot++)
+    {
+        // if the lead of A becomes greater than the remaining shots of B then A wins
+        // in the reverse case B wins
+        if (score_A - score_B > left_B || score_B - score_A > left_A)
+        {
+            break;
+        }
+
+        // adding to score of A if shot and decreasing the remaining shots
+        if(shot%2 == 0)
+        {
+            score_A += points[shot] - 48;
+            left_A -= 1;
+        }
+        // adding to score of A if shot and decreasing the remaining shots
+        else
+        {
+            score_B += points[shot] - 48;
+            left_B -= 1;
+        }
+    }
+
+    cout << shot << "\n";
+}
+
+int main() {
+	int test;
+	cin >> test;
+
+	while(test--)
+	{
+	    solve();
+	}
+	return 0;
+}
